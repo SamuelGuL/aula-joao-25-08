@@ -9,6 +9,7 @@ body {
     background-size: cover;
     background-position: center;
     transition: background-image 0.5s ease-in-out;
+    font-family: Arial, sans-serif;
   }
   
   button {
@@ -21,6 +22,7 @@ body {
     color: white;
     box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
     transition: background 0.3s;
+    margin: 10px;
   }
   
   button:hover {
@@ -28,6 +30,7 @@ body {
   }
   
   #feedback {
+    display: none;
     margin-top: 20px;
     display: flex;
     gap: 10px;
@@ -47,4 +50,21 @@ body {
   
   #feedback button:hover {
     background: #ddd;
+  }
+  
+  #downloads {
+    display: none;
+    margin-top: 20px;
+  }
+  
+  #downloads a {
+    display: block;
+    margin: 10px 0;
+    font-size: 18px;
+    text-decoration: none;
+    color: #0077cc;
+  }
+  
+  #downloads a:hover {
+    text-decoration: underline;
   }

@@ -1,14 +1,15 @@
-const wallpapers = [ 
+const wallpapers = [
     "wallpaper/misterBombastic.gif",
     "wallpaper/Itachi.gif",
-    "wallpaper/shadow.gif"
- ];
+    "wallpaper/Shadow.gif"
+];
 const sounds = [
     "sons/misterBombastic.mp3",
-    "sons/Itachi.mp3",
-    "sons/ShadowRoot.mp3"];
-let current = -1; // Começa sem wallpaper
-let hasVoted = false; // Controle de voto por exibição
+    "sons/itachi.mp3",
+    "sons/shadow.mp3"
+];
+let current = -1;
+let hasVoted = false;
 
 const body = document.body;
 const button = document.getElementById("changeBtn");
@@ -20,6 +21,9 @@ const dislikeBtn = document.getElementById("dislikeBtn");
 const likeCount = document.getElementById("likeCount");
 const dislikeCount = document.getElementById("dislikeCount");
 
+const showDownloadsBtn = document.getElementById("showDownloadsBtn");
+const downloads = document.getElementById("downloads");
+
 // Carrega votos salvos
 function loadVotes(index) {
   const likes = localStorage.getItem(`likes_${index}`) || 0;
@@ -28,7 +32,7 @@ function loadVotes(index) {
   dislikeCount.textContent = dislikes;
 }
 
-// Salva voto (apenas uma vez por exibição)
+// Salva voto (uma vez por exibição)
 function vote(type) {
   if (hasVoted) {
     alert("Você já votou nesse wallpaper!");
@@ -72,10 +76,16 @@ function changeWallpaperAndSound() {
 
   feedback.style.display = "flex";
   loadVotes(current);
-  enableVoting(); // permite votar novamente
+  enableVoting();
+}
+
+// Mostra os links de download
+function mostrarDownloads() {
+  downloads.style.display = "block";
 }
 
 // Eventos
 button.addEventListener("click", changeWallpaperAndSound);
 likeBtn.addEventListener("click", () => vote("likes"));
 dislikeBtn.addEventListener("click", () => vote("dislikes"));
+showDownloadsBtn.addEventListener("click", mostrarDownloads);
