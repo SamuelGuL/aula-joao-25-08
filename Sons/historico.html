@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Histórico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button onclick="location.href='index.html'" style="margin-top: 40px;">🔙 Voltar</button>
+  <h1>📜 Histórico de Wallpapers</h1>
+  <div id="historico"></div>
+
+  <script>
+    const arquivos = [
+      { nome: "Mister Bombastic", imagem: "misterBombastic.gif", som: "misterBombastic.mp3" },
+      { nome: "Shadow", imagem: "shadow.gif", som: "shadow.mp3" },
+      { nome: "Itachi", imagem: "itachi.gif", som: "itachi.mp3" },
+      { nome: "Johnny", imagem: "johnny.gif", som: "johnny.mp3" },
+      { nome: "O mano", imagem: "mano.gif", som: "mano.mp3" }
+      
+    ];
+
+    const historico = JSON.parse(localStorage.getItem("historicoVistos") || "[]");
+    const container = document.getElementById("historico");
+
+    historico.forEach(index => {
+      const item = arquivos[index];
+      const btn = document.createElement("button");
+      btn.textContent = item.nome;
+      btn.onclick = () => {
+        document.body.style.backgroundImage = `url(wallpaper/${item.imagem})`;
+        const audio = new Audio(`sons/${item.som}`);
+        audio.play();
+      };
+      container.appendChild(btn);
+    });
+  </script>
+</body>
+</html>
